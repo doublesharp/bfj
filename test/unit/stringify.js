@@ -27,9 +27,9 @@ suite('stringify:', () => {
       stringify = proxyquire(modulePath, {
         './streamify': spooks.fn({
           name: 'streamify',
-          log: log,
+          log,
           results: [
-            { on: spooks.fn({ name: 'on', log: log }) }
+            { on: spooks.fn({ name: 'on', log }) }
           ]
         })
       })

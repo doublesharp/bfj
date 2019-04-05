@@ -30,13 +30,13 @@ suite('read:', () => {
         fs: {
           createReadStream: spooks.fn({
             name: 'createReadStream',
-            log: log,
+            log,
             results: results.createReadStream
           })
         },
         './parse': spooks.fn({
           name: 'parse',
-          log: log,
+          log,
           results: results.parse
         })
       })

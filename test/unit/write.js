@@ -28,20 +28,20 @@ suite('write:', () => {
       }
 
       write = proxyquire(modulePath, {
-        'fs': {
+        fs: {
           createWriteStream: spooks.fn({
             name: 'createWriteStream',
-            log: log,
+            log,
             results: results.createWriteStream
           })
         },
         './streamify': spooks.fn({
           name: 'streamify',
-          log: log,
+          log,
           results: [
             {
-              pipe: spooks.fn({ name: 'pipe', log: log, chain: true }),
-              on: spooks.fn({ name: 'on', log: log, chain: true })
+              pipe: spooks.fn({ name: 'pipe', log, chain: true }),
+              on: spooks.fn({ name: 'on', log, chain: true })
             }
           ]
         })

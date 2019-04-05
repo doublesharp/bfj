@@ -72,7 +72,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -151,7 +151,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -234,7 +234,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -317,7 +317,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -397,7 +397,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -477,7 +477,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -557,7 +557,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -636,7 +636,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -715,7 +715,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -778,7 +778,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -846,7 +846,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -892,7 +892,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -938,7 +938,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -980,7 +980,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1026,7 +1026,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1083,7 +1083,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1125,7 +1125,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1167,7 +1167,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1230,7 +1230,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1277,7 +1277,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1320,7 +1320,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1363,7 +1363,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1413,7 +1413,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1468,7 +1468,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1519,7 +1519,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1570,7 +1570,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1624,7 +1624,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1683,7 +1683,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1738,7 +1738,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1793,7 +1793,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1844,7 +1844,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1899,7 +1899,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1954,7 +1954,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2005,7 +2005,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2060,7 +2060,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2115,7 +2115,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2167,7 +2167,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2230,7 +2230,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2313,7 +2313,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2371,7 +2371,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2444,7 +2444,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2499,7 +2499,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2541,7 +2541,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2585,7 +2585,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2635,7 +2635,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2687,7 +2687,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2738,7 +2738,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2785,7 +2785,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2851,10 +2851,12 @@ suite('walk:', () => {
           const event = events[key]
           emitter.on(event, spooks.fn({
             name: key,
-            log: log
+            log
           }))
           if (event !== events.end) {
-            emitter.on(event, () => { throw 0 })
+            emitter.on(event, () => {
+              throw 0
+            })
           }
         })
 
@@ -2918,7 +2920,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2964,7 +2966,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -3011,7 +3013,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -3062,7 +3064,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -3113,7 +3115,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -3160,7 +3162,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -3210,7 +3212,7 @@ suite('walk:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 

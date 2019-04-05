@@ -29,7 +29,7 @@ suite('unpipe:', () => {
       unpipe = proxyquire(modulePath, {
         './parse': spooks.fn({
           name: 'parse',
-          log: log,
+          log,
           results: results.parse
         })
       })

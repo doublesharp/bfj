@@ -61,7 +61,7 @@ suite('jsonstream:', () => {
       let jsonstream
 
       setup(() => {
-        jsonstream = new Stream(spooks.fn({ name: 'read', log: log }))
+        jsonstream = new Stream(spooks.fn({ name: 'read', log }))
       })
 
       test('jsonstream has _read method', () => {

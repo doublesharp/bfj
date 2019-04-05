@@ -26,8 +26,8 @@ suite('match:', () => {
       results = {
         walk: [
           {
-            on: spooks.fn({ name: 'on', log: log }),
-            pause: spooks.fn({ name: 'pause', log: log, results: [ resume ] })
+            on: spooks.fn({ name: 'on', log }),
+            pause: spooks.fn({ name: 'pause', log, results: [ resume ] })
           }
         ],
         push: [ true ]
@@ -35,14 +35,14 @@ suite('match:', () => {
       match = proxyquire(modulePath, {
         './walk': spooks.fn({
           name: 'walk',
-          log: log,
+          log,
           results: results.walk
         }),
         './datastream': spooks.ctor({
           name: 'DataStream',
-          log: log,
+          log,
           archetype: { instance: { push: () => {}, emit: () => {} } },
-          results: results
+          results
         })
       })
     })

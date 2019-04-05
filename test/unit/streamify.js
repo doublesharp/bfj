@@ -24,21 +24,21 @@ suite('streamify:', () => {
       log = {}
       results = {
         eventify: [
-          { on: spooks.fn({ name: 'on', log: log }) }
+          { on: spooks.fn({ name: 'on', log }) }
         ],
         push: [ true ]
       }
       streamify = proxyquire(modulePath, {
         './eventify': spooks.fn({
           name: 'eventify',
-          log: log,
+          log,
           results: results.eventify
         }),
         './jsonstream': spooks.ctor({
           name: 'JsonStream',
-          log: log,
+          log,
           archetype: { instance: { push: () => {}, emit: () => {} } },
-          results: results
+          results
         })
       })
     })

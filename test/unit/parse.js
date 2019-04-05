@@ -26,16 +26,16 @@ suite('parse:', () => {
       results = {
         walk: [
           {
-            on: spooks.fn({ name: 'on', log: log }),
-            pause: spooks.fn({ name: 'pause', log: log, results: [ () => {} ] }),
-            removeAllListeners: spooks.fn({ name: 'removeAllListeners', log: log })
+            on: spooks.fn({ name: 'on', log }),
+            pause: spooks.fn({ name: 'pause', log, results: [ () => {} ] }),
+            removeAllListeners: spooks.fn({ name: 'removeAllListeners', log })
           }
         ]
       }
       parse = proxyquire(modulePath, {
         './walk': spooks.fn({
           name: 'walk',
-          log: log,
+          log,
           results: results.walk
         })
       })
@@ -99,8 +99,8 @@ suite('parse:', () => {
         stream = {}
         options = {}
         parse(stream, options)
-          .then(spooks.fn({ name: 'resolve', log: log }))
-          .catch(spooks.fn({ name: 'reject', log: log }))
+          .then(spooks.fn({ name: 'resolve', log }))
+          .catch(spooks.fn({ name: 'reject', log }))
       })
 
       test('walk was called once', () => {
@@ -651,10 +651,10 @@ suite('parse:', () => {
 
       setup(() => {
         stream = {}
-        options = { reviver: spooks.fn({ name: 'reviver', log: log, results: [ 'reviver result' ] }) }
+        options = { reviver: spooks.fn({ name: 'reviver', log, results: [ 'reviver result' ] }) }
         parse(stream, options)
-          .then(spooks.fn({ name: 'resolve', log: log }))
-          .catch(spooks.fn({ name: 'reject', log: log }))
+          .then(spooks.fn({ name: 'resolve', log }))
+          .catch(spooks.fn({ name: 'reject', log }))
       })
 
       test('walk was called once', () => {
@@ -818,8 +818,8 @@ suite('parse:', () => {
       setup(() => {
         stream = {}
         parse(stream, { ndjson: true })
-          .then(spooks.fn({ name: 'resolve', log: log }))
-          .catch(spooks.fn({ name: 'reject', log: log }))
+          .then(spooks.fn({ name: 'resolve', log }))
+          .catch(spooks.fn({ name: 'reject', log }))
       })
 
       test('walk was called once', () => {
@@ -907,8 +907,8 @@ suite('parse:', () => {
         suite('parse with ndjson:', () => {
           setup(() => {
             parse(stream, { ndjson: true })
-              .then(spooks.fn({ name: 'resolve2', log: log }))
-              .catch(spooks.fn({ name: 'reject2', log: log }))
+              .then(spooks.fn({ name: 'resolve2', log }))
+              .catch(spooks.fn({ name: 'reject2', log }))
           })
 
           test('EventEmitter.on was called twelve times', () => {
@@ -952,8 +952,8 @@ suite('parse:', () => {
             suite('parse with ndjson:', () => {
               setup(() => {
                 parse(stream, { ndjson: true })
-                  .then(spooks.fn({ name: 'resolve3', log: log }))
-                  .catch(spooks.fn({ name: 'reject3', log: log }))
+                  .then(spooks.fn({ name: 'resolve3', log }))
+                  .catch(spooks.fn({ name: 'reject3', log }))
               })
 
               test('EventEmitter.on was called twelve times', () => {
@@ -1002,8 +1002,8 @@ suite('parse:', () => {
         suite('parse with ndjson and fresh stream:', () => {
           setup(() => {
             parse({}, { ndjson: true })
-              .then(spooks.fn({ name: 'resolve2', log: log }))
-              .catch(spooks.fn({ name: 'reject2', log: log }))
+              .then(spooks.fn({ name: 'resolve2', log }))
+              .catch(spooks.fn({ name: 'reject2', log }))
           })
 
           test('EventEmitter.on was called twelve times', () => {

@@ -1,0 +1,312 @@
+diff --git a/src/eventify.js b/src/eventify.js
+index 2e63da1d4afa4a1e7e5108ba2213ff0f602bac34..4367fa3e9e7eaebcf56acbd5b85d9031ee3d7355 100644
+--- a/src/eventify.js
++++ b/src/eventify.js
+@@ -110,7 +110,7 @@ function eventify (data, options = {}) {
+     })
+ 
+     function after (coerced) {
+-      if (isInvalidType(coerced)) {
++      if (isInvalid(coerced)) {
+         return
+       }
+ 
+@@ -205,8 +205,15 @@ function eventify (data, options = {}) {
+     })
+   }
+ 
+-  function isInvalidType (datum) {
+-    return !! invalidTypes[typeof datum]
++  function isInvalid (datum) {
++    const type = typeof datum
++    return !! invalidTypes[type] || (
++      type === 'number' && ! isValidNumber(datum)
++    )
++  }
++
++  function isValidNumber (datum) {
++    return datum > Number.NEGATIVE_INFINITY && datum < Number.POSITIVE_INFINITY
+   }
+ 
+   function literal (datum) {
+@@ -232,7 +239,7 @@ function eventify (data, options = {}) {
+   function array (datum) {
+     // For an array, collection:object and collection:array are the same.
+     return collection(datum, datum, 'array', item => {
+-      if (isInvalidType(item)) {
++      if (isInvalid(item)) {
+         return proceed(null)
+       }
+ 
+@@ -286,7 +293,7 @@ function eventify (data, options = {}) {
+     return collection(datum, Object.keys(datum), 'object', key => {
+       const item = datum[key]
+ 
+-      if (isInvalidType(item)) {
++      if (isInvalid(item)) {
+         return Promise.resolve()
+       }
+ 
+diff --git a/test/unit/eventify.js b/test/unit/eventify.js
+index 19a6aa77729faddba4e82befdc51fdaa3164cf7b..7188616e5cc7090a2bfd9a6ac984db8b13bc05e1 100644
+--- a/test/unit/eventify.js
++++ b/test/unit/eventify.js
+@@ -119,6 +119,210 @@ suite('eventify:', () => {
+       })
+     })
+ 
++    suite('NaN:', () => {
++      setup(done => {
++        const emitter = eventify(NaN)
++
++        Object.keys(events).forEach(key => {
++          emitter.on(events[key], spooks.fn({
++            name: key,
++            log: log
++          }))
++        })
++
++        emitter.on(events.end, done)
++      })
++
++      test('end event occurred once', () => {
++        assert.strictEqual(log.counts.end, 1)
++      })
++
++      test('end event was dispatched correctly', () => {
++        assert.lengthOf(log.args.end[0], 1)
++        assert.isUndefined(log.args.end[0][0])
++      })
++
++      test('array event did not occur', () => {
++        assert.strictEqual(log.counts.array, 0)
++      })
++
++      test('object event did not occur', () => {
++        assert.strictEqual(log.counts.object, 0)
++      })
++
++      test('property event did not occur', () => {
++        assert.strictEqual(log.counts.property, 0)
++      })
++
++      test('string event did not occur', () => {
++        assert.strictEqual(log.counts.string, 0)
++      })
++
++      test('number event did not occur', () => {
++        assert.strictEqual(log.counts.number, 0)
++      })
++
++      test('literal event did not occur', () => {
++        assert.strictEqual(log.counts.literal, 0)
++      })
++
++      test('endArray event did not occur', () => {
++        assert.strictEqual(log.counts.endArray, 0)
++      })
++
++      test('endObject event did not occur', () => {
++        assert.strictEqual(log.counts.endObject, 0)
++      })
++
++      test('error event did not occur', () => {
++        assert.strictEqual(log.counts.error, 0)
++      })
++
++      test('dataError event did not occur', () => {
++        assert.strictEqual(log.counts.dataError, 0)
++      })
++
++      test('endPrefix event did not occur', () => {
++        assert.strictEqual(log.counts.endPrefix, 0)
++      })
++    })
++
++    suite('Infinity:', () => {
++      setup(done => {
++        const emitter = eventify(Infinity)
++
++        Object.keys(events).forEach(key => {
++          emitter.on(events[key], spooks.fn({
++            name: key,
++            log: log
++          }))
++        })
++
++        emitter.on(events.end, done)
++      })
++
++      test('end event occurred once', () => {
++        assert.strictEqual(log.counts.end, 1)
++      })
++
++      test('end event was dispatched correctly', () => {
++        assert.lengthOf(log.args.end[0], 1)
++        assert.isUndefined(log.args.end[0][0])
++      })
++
++      test('array event did not occur', () => {
++        assert.strictEqual(log.counts.array, 0)
++      })
++
++      test('object event did not occur', () => {
++        assert.strictEqual(log.counts.object, 0)
++      })
++
++      test('property event did not occur', () => {
++        assert.strictEqual(log.counts.property, 0)
++      })
++
++      test('string event did not occur', () => {
++        assert.strictEqual(log.counts.string, 0)
++      })
++
++      test('number event did not occur', () => {
++        assert.strictEqual(log.counts.number, 0)
++      })
++
++      test('literal event did not occur', () => {
++        assert.strictEqual(log.counts.literal, 0)
++      })
++
++      test('endArray event did not occur', () => {
++        assert.strictEqual(log.counts.endArray, 0)
++      })
++
++      test('endObject event did not occur', () => {
++        assert.strictEqual(log.counts.endObject, 0)
++      })
++
++      test('error event did not occur', () => {
++        assert.strictEqual(log.counts.error, 0)
++      })
++
++      test('dataError event did not occur', () => {
++        assert.strictEqual(log.counts.dataError, 0)
++      })
++
++      test('endPrefix event did not occur', () => {
++        assert.strictEqual(log.counts.endPrefix, 0)
++      })
++    })
++
++    suite('Number.NEGATIVE_INFINITY:', () => {
++      setup(done => {
++        const emitter = eventify(Number.NEGATIVE_INFINITY)
++
++        Object.keys(events).forEach(key => {
++          emitter.on(events[key], spooks.fn({
++            name: key,
++            log: log
++          }))
++        })
++
++        emitter.on(events.end, done)
++      })
++
++      test('end event occurred once', () => {
++        assert.strictEqual(log.counts.end, 1)
++      })
++
++      test('end event was dispatched correctly', () => {
++        assert.lengthOf(log.args.end[0], 1)
++        assert.isUndefined(log.args.end[0][0])
++      })
++
++      test('array event did not occur', () => {
++        assert.strictEqual(log.counts.array, 0)
++      })
++
++      test('object event did not occur', () => {
++        assert.strictEqual(log.counts.object, 0)
++      })
++
++      test('property event did not occur', () => {
++        assert.strictEqual(log.counts.property, 0)
++      })
++
++      test('string event did not occur', () => {
++        assert.strictEqual(log.counts.string, 0)
++      })
++
++      test('number event did not occur', () => {
++        assert.strictEqual(log.counts.number, 0)
++      })
++
++      test('literal event did not occur', () => {
++        assert.strictEqual(log.counts.literal, 0)
++      })
++
++      test('endArray event did not occur', () => {
++        assert.strictEqual(log.counts.endArray, 0)
++      })
++
++      test('endObject event did not occur', () => {
++        assert.strictEqual(log.counts.endObject, 0)
++      })
++
++      test('error event did not occur', () => {
++        assert.strictEqual(log.counts.error, 0)
++      })
++
++      test('dataError event did not occur', () => {
++        assert.strictEqual(log.counts.dataError, 0)
++      })
++
++      test('endPrefix event did not occur', () => {
++        assert.strictEqual(log.counts.endPrefix, 0)
++      })
++    })
++
+     suite('function:', () => {
+       setup(done => {
+         const emitter = eventify(() => {})
+@@ -699,7 +903,16 @@ suite('eventify:', () => {
+ 
+     suite('array with items:', () => {
+       setup(done => {
+-        const emitter = eventify([ undefined, 'foo', () => {}, 'bar', Symbol('baz') ])
++        const emitter = eventify([
++          undefined,
++          NaN,
++          Number.POSITIVE_INFINITY,
++          Number.NEGATIVE_INFINITY,
++          'foo',
++          () => {},
++          'bar',
++          Symbol('baz')
++        ])
+ 
+         Object.keys(events).forEach(key => {
+           emitter.on(events[key], spooks.fn({
+@@ -715,8 +928,8 @@ suite('eventify:', () => {
+         assert.strictEqual(log.counts.array, 1)
+       })
+ 
+-      test('literal event occurred three times', () => {
+-        assert.strictEqual(log.counts.literal, 3)
++      test('literal event occurred six times', () => {
++        assert.strictEqual(log.counts.literal, 6)
+       })
+ 
+       test('literal event was dispatched correctly first time', () => {
+@@ -731,6 +944,18 @@ suite('eventify:', () => {
+         assert.isNull(log.args.literal[2][0])
+       })
+ 
++      test('literal event was dispatched correctly fourth time', () => {
++        assert.isNull(log.args.literal[3][0])
++      })
++
++      test('literal event was dispatched correctly fifth time', () => {
++        assert.isNull(log.args.literal[4][0])
++      })
++
++      test('literal event was dispatched correctly sixth time', () => {
++        assert.isNull(log.args.literal[5][0])
++      })
++
+       test('string event occurred twice', () => {
+         assert.strictEqual(log.counts.string, 2)
+       })

@@ -172,7 +172,7 @@ function initialise (stream, options = {}) {
 
     if (isStreamEnded) {
       setImmediate(endWalk)
-      return Promise.reject()
+      return Promise.reject(new Error('Stream is ended.'))
     }
 
     resumeFn = after
@@ -187,7 +187,7 @@ function initialise (stream, options = {}) {
         return resolve()
       }
 
-      reject()
+      reject(new Error('Stream is ended.'))
 
       if (isStreamEnded) {
         setImmediate(endWalk)

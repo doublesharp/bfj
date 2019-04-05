@@ -61,7 +61,7 @@ suite('datastream:', () => {
       let datastream
 
       setup(() => {
-        datastream = new Stream(spooks.fn({ name: 'read', log: log }))
+        datastream = new Stream(spooks.fn({ name: 'read', log }))
       })
 
       test('datastream has _read method', () => {

@@ -25,7 +25,7 @@ function getDataPath (suffix) {
 }
 
 function reportTime () {
-  let interimTime = process.hrtime(time)
+  const interimTime = process.hrtime(time)
   console.log('%d seconds and %d nanoseconds', interimTime[0], interimTime[1])
   time = process.hrtime()
 }

@@ -300,25 +300,6 @@ suite('integration:', () => {
       })
     })
 
-    suite('parse request:', () => {
-      let error, result
-
-      setup(done => {
-        const jsonstream = new stream.PassThrough()
-        request({ url: 'https://raw.githubusercontent.com/philbooth/bfj/master/package.json' })
-          .pipe(bfj.unpipe((err, res) => {
-            error = err
-            result = res
-            done()
-          }))
-      })
-
-      test('result was correct', () => {
-        assert.isNull(error)
-        assert.deepEqual(result, require('../package.json'))
-      })
-    })
-
     suite('parse NDJSON:', () => {
       let failed, file, results
 
@@ -381,7 +362,7 @@ suite('integration:', () => {
         return bfj.stringify(new Promise(resolve => {
           setTimeout(resolve.bind(null, 'foo\t"\nbar'), 20)
         }))
-        .then(res => result = res)
+          .then(res => result = res)
       })
 
       test('result was correct', () => {
@@ -399,13 +380,13 @@ suite('integration:', () => {
           file,
           { foo: [ 'b', 'a', 'r' ], baz: null, qux: 3.14159265359e42 }
         )
-        .then(() => {
-          result = fs.readFileSync(file, { encoding: 'utf8' })
-        })
-        .catch(error => {
-          failed = true
-          result = error
-        })
+          .then(() => {
+            result = fs.readFileSync(file, { encoding: 'utf8' })
+          })
+          .catch(error => {
+            failed = true
+            result = error
+          })
       })
 
       teardown(() => {
