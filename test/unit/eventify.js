@@ -58,6 +58,210 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
+            log
+          }))
+        })
+
+        emitter.on(events.end, done)
+      })
+
+      test('end event occurred once', () => {
+        assert.strictEqual(log.counts.end, 1)
+      })
+
+      test('end event was dispatched correctly', () => {
+        assert.lengthOf(log.args.end[0], 1)
+        assert.isUndefined(log.args.end[0][0])
+      })
+
+      test('array event did not occur', () => {
+        assert.strictEqual(log.counts.array, 0)
+      })
+
+      test('object event did not occur', () => {
+        assert.strictEqual(log.counts.object, 0)
+      })
+
+      test('property event did not occur', () => {
+        assert.strictEqual(log.counts.property, 0)
+      })
+
+      test('string event did not occur', () => {
+        assert.strictEqual(log.counts.string, 0)
+      })
+
+      test('number event did not occur', () => {
+        assert.strictEqual(log.counts.number, 0)
+      })
+
+      test('literal event did not occur', () => {
+        assert.strictEqual(log.counts.literal, 0)
+      })
+
+      test('endArray event did not occur', () => {
+        assert.strictEqual(log.counts.endArray, 0)
+      })
+
+      test('endObject event did not occur', () => {
+        assert.strictEqual(log.counts.endObject, 0)
+      })
+
+      test('error event did not occur', () => {
+        assert.strictEqual(log.counts.error, 0)
+      })
+
+      test('dataError event did not occur', () => {
+        assert.strictEqual(log.counts.dataError, 0)
+      })
+
+      test('endPrefix event did not occur', () => {
+        assert.strictEqual(log.counts.endPrefix, 0)
+      })
+    })
+
+    suite('NaN:', () => {
+      setup(done => {
+        const emitter = eventify(NaN)
+
+        Object.keys(events).forEach(key => {
+          emitter.on(events[key], spooks.fn({
+            name: key,
+            log: log
+          }))
+        })
+
+        emitter.on(events.end, done)
+      })
+
+      test('end event occurred once', () => {
+        assert.strictEqual(log.counts.end, 1)
+      })
+
+      test('end event was dispatched correctly', () => {
+        assert.lengthOf(log.args.end[0], 1)
+        assert.isUndefined(log.args.end[0][0])
+      })
+
+      test('array event did not occur', () => {
+        assert.strictEqual(log.counts.array, 0)
+      })
+
+      test('object event did not occur', () => {
+        assert.strictEqual(log.counts.object, 0)
+      })
+
+      test('property event did not occur', () => {
+        assert.strictEqual(log.counts.property, 0)
+      })
+
+      test('string event did not occur', () => {
+        assert.strictEqual(log.counts.string, 0)
+      })
+
+      test('number event did not occur', () => {
+        assert.strictEqual(log.counts.number, 0)
+      })
+
+      test('literal event did not occur', () => {
+        assert.strictEqual(log.counts.literal, 0)
+      })
+
+      test('endArray event did not occur', () => {
+        assert.strictEqual(log.counts.endArray, 0)
+      })
+
+      test('endObject event did not occur', () => {
+        assert.strictEqual(log.counts.endObject, 0)
+      })
+
+      test('error event did not occur', () => {
+        assert.strictEqual(log.counts.error, 0)
+      })
+
+      test('dataError event did not occur', () => {
+        assert.strictEqual(log.counts.dataError, 0)
+      })
+
+      test('endPrefix event did not occur', () => {
+        assert.strictEqual(log.counts.endPrefix, 0)
+      })
+    })
+
+    suite('Infinity:', () => {
+      setup(done => {
+        const emitter = eventify(Infinity)
+
+        Object.keys(events).forEach(key => {
+          emitter.on(events[key], spooks.fn({
+            name: key,
+            log: log
+          }))
+        })
+
+        emitter.on(events.end, done)
+      })
+
+      test('end event occurred once', () => {
+        assert.strictEqual(log.counts.end, 1)
+      })
+
+      test('end event was dispatched correctly', () => {
+        assert.lengthOf(log.args.end[0], 1)
+        assert.isUndefined(log.args.end[0][0])
+      })
+
+      test('array event did not occur', () => {
+        assert.strictEqual(log.counts.array, 0)
+      })
+
+      test('object event did not occur', () => {
+        assert.strictEqual(log.counts.object, 0)
+      })
+
+      test('property event did not occur', () => {
+        assert.strictEqual(log.counts.property, 0)
+      })
+
+      test('string event did not occur', () => {
+        assert.strictEqual(log.counts.string, 0)
+      })
+
+      test('number event did not occur', () => {
+        assert.strictEqual(log.counts.number, 0)
+      })
+
+      test('literal event did not occur', () => {
+        assert.strictEqual(log.counts.literal, 0)
+      })
+
+      test('endArray event did not occur', () => {
+        assert.strictEqual(log.counts.endArray, 0)
+      })
+
+      test('endObject event did not occur', () => {
+        assert.strictEqual(log.counts.endObject, 0)
+      })
+
+      test('error event did not occur', () => {
+        assert.strictEqual(log.counts.error, 0)
+      })
+
+      test('dataError event did not occur', () => {
+        assert.strictEqual(log.counts.dataError, 0)
+      })
+
+      test('endPrefix event did not occur', () => {
+        assert.strictEqual(log.counts.endPrefix, 0)
+      })
+    })
+
+    suite('Number.NEGATIVE_INFINITY:', () => {
+      setup(done => {
+        const emitter = eventify(Number.NEGATIVE_INFINITY)
+
+        Object.keys(events).forEach(key => {
+          emitter.on(events[key], spooks.fn({
+            name: key,
             log: log
           }))
         })
@@ -126,7 +330,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -189,7 +393,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -252,7 +456,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -325,7 +529,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -398,7 +602,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -466,7 +670,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -498,7 +702,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -566,7 +770,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -634,7 +838,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -669,7 +873,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -699,12 +903,21 @@ suite('eventify:', () => {
 
     suite('array with items:', () => {
       setup(done => {
-        const emitter = eventify([ undefined, 'foo', () => {}, 'bar', Symbol('baz') ])
+        const emitter = eventify([
+          undefined,
+          NaN,
+          Number.POSITIVE_INFINITY,
+          Number.NEGATIVE_INFINITY,
+          'foo',
+          () => {},
+          'bar',
+          Symbol('baz')
+        ])
 
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -715,8 +928,8 @@ suite('eventify:', () => {
         assert.strictEqual(log.counts.array, 1)
       })
 
-      test('literal event occurred three times', () => {
-        assert.strictEqual(log.counts.literal, 3)
+      test('literal event occurred six times', () => {
+        assert.strictEqual(log.counts.literal, 6)
       })
 
       test('literal event was dispatched correctly first time', () => {
@@ -729,6 +942,18 @@ suite('eventify:', () => {
 
       test('literal event was dispatched correctly third time', () => {
         assert.isNull(log.args.literal[2][0])
+      })
+
+      test('literal event was dispatched correctly fourth time', () => {
+        assert.isNull(log.args.literal[3][0])
+      })
+
+      test('literal event was dispatched correctly fifth time', () => {
+        assert.isNull(log.args.literal[4][0])
+      })
+
+      test('literal event was dispatched correctly sixth time', () => {
+        assert.isNull(log.args.literal[5][0])
       })
 
       test('string event occurred twice', () => {
@@ -771,7 +996,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -834,7 +1059,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -889,7 +1114,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -974,7 +1199,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1046,7 +1271,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1113,7 +1338,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1183,7 +1408,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1248,7 +1473,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1313,12 +1538,14 @@ suite('eventify:', () => {
       setup(done => {
         let resolve
 
-        const emitter = eventify({ toJSON () { return 'foo' } })
+        const emitter = eventify({ toJSON () {
+          return 'foo'
+        } })
 
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1383,12 +1610,12 @@ suite('eventify:', () => {
       setup(done => {
         let resolve
 
-        const emitter = eventify(new Map([['foo','bar'],['baz','qux']]))
+        const emitter = eventify(new Map([ [ 'foo', 'bar' ], [ 'baz', 'qux' ] ]))
 
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1464,12 +1691,12 @@ suite('eventify:', () => {
       setup(done => {
         let resolve
 
-        const emitter = eventify(new Map([['foo','bar'],['baz','qux']]), { maps: 'ignore' })
+        const emitter = eventify(new Map([ [ 'foo', 'bar' ], [ 'baz', 'qux' ] ]), { maps: 'ignore' })
 
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1529,12 +1756,12 @@ suite('eventify:', () => {
       setup(done => {
         let resolve
 
-        const emitter = eventify(new Set(['foo','bar']))
+        const emitter = eventify(new Set([ 'foo', 'bar' ]))
 
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1602,12 +1829,12 @@ suite('eventify:', () => {
       setup(done => {
         let resolve
 
-        const emitter = eventify(new Set(['foo','bar']), { iterables: 'ignore' })
+        const emitter = eventify(new Set([ 'foo', 'bar' ]), { iterables: 'ignore' })
 
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1672,13 +1899,13 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
         emitter.on(events.end, done)
 
-        setImmediate(resolve.bind(null, new Map([['foo','bar'],['baz','qux']])))
+        setImmediate(resolve.bind(null, new Map([ [ 'foo', 'bar' ], [ 'baz', 'qux' ] ])))
       })
 
       test('object event occurred once', () => {
@@ -1755,7 +1982,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1806,7 +2033,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1859,7 +2086,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1900,7 +2127,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1940,7 +2167,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -1980,7 +2207,7 @@ suite('eventify:', () => {
         Object.keys(events).forEach(key => {
           emitter.on(events[key], spooks.fn({
             name: key,
-            log: log
+            log
           }))
         })
 
@@ -2014,16 +2241,18 @@ suite('eventify:', () => {
 
     suite('throw errors from event handlers:', () => {
       setup(done => {
-        const emitter = eventify([null,false,true,0,"",{"foo":"bar"}])
+        const emitter = eventify([ null, false, true, 0, "", { foo: "bar" } ])
 
         Object.keys(events).forEach(key => {
           const event = events[key]
           emitter.on(event, spooks.fn({
             name: key,
-            log: log
+            log
           }))
           if (event !== events.end) {
-            emitter.on(event, () => { throw 0 })
+            emitter.on(event, () => {
+              throw 0
+            })
           }
         })
 

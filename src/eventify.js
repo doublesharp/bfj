@@ -110,7 +110,7 @@ function eventify (data, options = {}) {
     })
 
     function after (coerced) {
-      if (isInvalidType(coerced)) {
+      if (isInvalid(coerced)) {
         return
       }
 
@@ -205,8 +205,15 @@ function eventify (data, options = {}) {
     })
   }
 
-  function isInvalidType (datum) {
-    return !! invalidTypes[typeof datum]
+  function isInvalid (datum) {
+    const type = typeof datum
+    return !! invalidTypes[type] || (
+      type === 'number' && ! isValidNumber(datum)
+    )
+  }
+
+  function isValidNumber (datum) {
+    return datum > Number.NEGATIVE_INFINITY && datum < Number.POSITIVE_INFINITY
   }
 
   function literal (datum) {
@@ -232,7 +239,7 @@ function eventify (data, options = {}) {
   function array (datum) {
     // For an array, collection:object and collection:array are the same.
     return collection(datum, datum, 'array', item => {
-      if (isInvalidType(item)) {
+      if (isInvalid(item)) {
         return proceed(null)
       }
 
@@ -286,7 +293,7 @@ function eventify (data, options = {}) {
     return collection(datum, Object.keys(datum), 'object', key => {
       const item = datum[key]
 
-      if (isInvalidType(item)) {
+      if (isInvalid(item)) {
         return Promise.resolve()
       }
 
